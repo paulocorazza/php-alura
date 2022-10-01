@@ -15,10 +15,10 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return to_route('/series');
+    return view('welcome');
 });
  
-Route::resource('/series',SeriesController::class)->only(['index','create','store','destroy']);
+Route::resource('/series',SeriesController::class)->except(['show']);
 
 // Route::get('/series', [SeriesController::class, 'index'])->name('series.index');
 // Route::get('/series/create',[SeriesController::class,'create'])->name('series.create');
