@@ -16,13 +16,11 @@
         </thead>
         <tbody>
             @foreach ($series as $serie)
-            <?php $created_at = date('d/m/Y H:i:s',strtotime('-3 hours',strtotime($serie->created_at))) ?>
-            <?php $updated_at = date('d/m/Y H:i:s',strtotime('-3 hours',strtotime($serie->updated_at))) ?>
             <tr>
                 <th scope="row">{{ $serie->id }}</th>
                 <td>{{ $serie->nome }}</td>
-                <td>{{ $created_at }}</td>
-                <td>{{ $updated_at }}</td>
+                <td>{{ $serie->created_at }}</td>
+                <td>{{ $serie->updated_at }}</td>
                 <td>
                     <form action="{{ route('series.destroy', $serie->id) }}" method="POST">
                         @csrf
@@ -41,9 +39,9 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.1/jquery.min.js" integrity="sha512-aVKKRRi/Q/YV+4mjoKBsE4x3H+BkegoM/em46NNlCqNTmUYADjBbeNefNxYV7giUp0VxICtqdrbqU7iVaeZNXA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
     <script>
         $("document").ready(function () {
-            setTimeout(function () {
-                $("div.alert").remove();
-            }, 5000); // 5 secs
-        });
+                    setTimeout(function () {
+                        $("div.alert").remove();
+                    }, 5000); // 5 secs
+                });
     </script>
 </x-layout>
