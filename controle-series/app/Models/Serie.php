@@ -8,13 +8,5 @@ use Illuminate\Database\Eloquent\Model;
 class Serie extends Model
 {
     use HasFactory;
-    protected $fillable = ['nome'];
-
-    public function convertDate()
-    {
-        if(isset($this->created_at)){
-            echo "batata";
-        }
-    }
-   
+    protected $fillable = ['nome','diretor','categoria'];
 }

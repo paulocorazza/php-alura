@@ -16,6 +16,13 @@ class SeriesController extends Controller
         return view('series.index',compact('series'))->with('mensagemSucesso', $mensagemSucesso);
     }
 
+    public function show($id)
+    {
+        $serie =  Serie::Find($id);
+        return view('series.show')->with('serie',$serie);
+    }
+
+
     public function create()
     {
         return view('series.create');
@@ -35,6 +42,8 @@ class SeriesController extends Controller
     public function update(Serie $series, SeriesFormRequest $request)
     {
         $series->nome = $request->nome;
+        $series->diretor = $request->diretor;
+        $series->categoria = $request->categoria;
         $series->save();
         return to_route('series.index')->with('mensagem.sucesso', "Série {$series->nome} atualizada com sucesso!" );
     }

@@ -1,6 +1,6 @@
 <x-layout title="series">
     <h1>Séries</h1>
-    <a href="{{ route('series.create') }}" class="btn btn-dark mb-2">Criar serie</a>
+    <a href="{{ route('series.create') }}" class="btn btn-success mb-2">Criar serie</a>
     @isset($mensagemSucesso)
     <div class="alert alert-success">
         {{ $mensagemSucesso }}
@@ -10,6 +10,8 @@
         <thead>
             <th>ID</th>
             <th>Nome</th>
+            <th>Diretor</th>
+            <th>Categoria</th>
             <th>Criado em</th>
             <th>Atualizado em</th>
             <th>Ações</th>
@@ -19,16 +21,22 @@
             <tr>
                 <th scope="row">{{ $serie->id }}</th>
                 <td>{{ $serie->nome }}</td>
+                <td>{{ $serie->diretor }}</td>
+                <td>{{ $serie->categoria }}</td>
                 <td>{{ $serie->created_at }}</td>
                 <td>{{ $serie->updated_at }}</td>
                 <td>
                     <form action="{{ route('series.destroy', $serie->id) }}" method="POST">
                         @csrf
                         @method('DELETE')
-                        <button class="btn btn-sm btn-danger"><i class ="fa fa-trash"></i> Excluir</button>
+                        <button class="btn btn-sm btn-danger mt-2"><i class ="fa fa-trash"></i> Excluir</button>
                     </form>
-                    <span class="d-flex">
-                        <a href="{{ route('series.edit', $serie->id) }}" class="btn btn-primary btn-sm"><i class ="fa fa-pencil"></i> Editar</a>
+                    <span class="d-flex mt-2">
+                        <a href="{{ route('series.edit', $serie->id) }}" class="btn btn-primary btn-sm"><i class="fa fa-pencil"></i> Editar</a>
+                    </span>
+                    {{-- <p></p> --}}
+                    <span class="d-flex mt-2">
+                        <a href="{{ route('series.show', $serie->id) }}" class="btn btn-secondary btn-sm"><i class="fa fa-magnifying-glass"></i> Detalhes</a>
                     </span>
                 </td>
             </tr>

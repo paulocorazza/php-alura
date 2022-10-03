@@ -18,7 +18,7 @@ Route::get('/', function () {
     return view('welcome');
 });
  
-Route::resource('/series',SeriesController::class)->except(['show']);
+Route::resource('/series',SeriesController::class);
 
 // Route::get('/series', [SeriesController::class, 'index'])->name('series.index');
 // Route::get('/series/create',[SeriesController::class,'create'])->name('series.create');
