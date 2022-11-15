@@ -1,10 +1,10 @@
-<x-layout title="Detalhes da Série {{ $serie->nome }}">
+<x-layout title="Detalhes da Série {{ $series->name }}">
 <div class="form-group">
-    <label for="nome" class="form-label">Nome:</label>
-    <p>{{ $serie->nome }}</p>
+    <label for="name" class="form-label">Nome:</label>
+    <p>{{ $series->name }}</p>
     <labek for="diretor" class="form-label">Diretor:</labek>
-    <p>{{ $serie->diretor }}</p>
+    <p>{{ $series->director }}</p>
     <label for="categoria" class="form-label">Categoria:</label>
-    <p>{{ $serie->categoria }}</´>
+    <p>{{ $series->category }}</´>
 </div>
 </x-layout>

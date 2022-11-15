@@ -24,7 +24,9 @@ class SeriesFormRequest extends FormRequest
     public function rules()
     {
         return [
-            'nome' => 'required|min:2'
+            'name' => 'required|min:2',
+            'director' => 'required',
+            'category'=> 'required'
         ];
     }
 
@@ -32,7 +34,7 @@ class SeriesFormRequest extends FormRequest
     {
         return [
             'required' => 'O campo :attribute é obrigatório',
-            'nome.min' => 'O campo nome precisa ter pelo menos 2 caracteres'
+            'name.min' => 'O campo nome precisa ter pelo menos 2 caracteres'
         ];
     }
 }

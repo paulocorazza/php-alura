@@ -3,14 +3,14 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\SeriesFormRequest;
-use App\Models\Serie;
+use App\Models\Series;
 use Illuminate\Http\Request;
 
 class SeriesController extends Controller
 {
     public function index(Request $request )
     {
-        $series = Serie::query()->orderBy('id')->get();
+        $series = Series::all();
         $mensagemSucesso = $request->session()->get('mensagem.sucesso');
         $request->session()->forget('mensagem.sucesso');
         return view('series.index',compact('series'))->with('mensagemSucesso', $mensagemSucesso);
@@ -18,8 +18,9 @@ class SeriesController extends Controller
 
     public function show($id)
     {
-        $serie =  Serie::Find($id);
-        return view('series.show')->with('serie',$serie);
+        $series =  Series::Find($id);
+        //dd($series);
+        return view('series.show')->with('series',$series);
     }
 
 
@@ -30,28 +31,29 @@ class SeriesController extends Controller
 
     public function store(SeriesFormRequest $request)
     {
-        $serie = Serie::create($request->all());
-        return to_route('series.index')->with('mensagem.sucesso',"Série {$serie->nome} inserida com sucesso!");
+        $series = Series::create($request->all());
+        return to_route('series.index')->with('mensagem.sucesso',"Série {$series->name} inserida com sucesso!");
+        
     }
 
-    public function edit(Serie $series)
+    public function edit(Series $series)
     {
-        return view('series.edit')->with('serie',$series);
+        return view('series.edit')->with('series',$series);
     }
 
-    public function update(Serie $series, SeriesFormRequest $request)
+    public function update(Series $series, SeriesFormRequest $request)
     {
-        $series->nome = $request->nome;
-        $series->diretor = $request->diretor;
-        $series->categoria = $request->categoria;
+        $series->name = $request->name;
+        $series->director = $request->director;
+        $series->category = $request->category;
         $series->save();
-        return to_route('series.index')->with('mensagem.sucesso', "Série {$series->nome} atualizada com sucesso!" );
+        return to_route('series.index')->with('mensagem.sucesso', "Série {$series->name} atualizada com sucesso!" );
     }
 
-    public function destroy(Serie $series)
+    public function destroy(Series $series)
     {
         $series->delete();
-        return to_route('series.index')->with('mensagem.sucesso',"Série {$series->nome} excluída com sucesso!");
+        return to_route('series.index')->with('mensagem.sucesso',"Série {$series->name} excluída com sucesso!");
     }
 
 

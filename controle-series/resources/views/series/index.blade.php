@@ -1,5 +1,5 @@
 <x-layout title="series">
-    <h1>Séries</h1>
+    <h1 class="text-center mt-4">Séries</h1>
     <a href="{{ route('series.create') }}" class="btn btn-success mb-2">Criar serie</a>
     @isset($mensagemSucesso)
     <div class="alert alert-success">
@@ -17,26 +17,26 @@
             <th>Ações</th>
         </thead>
         <tbody>
-            @foreach ($series as $serie)
+            @foreach ($series as $series)
             <tr>
-                <th scope="row">{{ $serie->id }}</th>
-                <td>{{ $serie->nome }}</td>
-                <td>{{ $serie->diretor }}</td>
-                <td>{{ $serie->categoria }}</td>
-                <td>{{ $serie->created_at }}</td>
-                <td>{{ $serie->updated_at }}</td>
+                <th scope="row">{{ $series->id }}</th>
+                <td>{{ $series->name }}</td>
+                <td>{{ $series->director }}</td>
+                <td>{{ $series->category }}</td>
+                <td>{{ $series->created_at }}</td>
+                <td>{{ $series->updated_at }}</td>
                 <td>
-                    <form action="{{ route('series.destroy', $serie->id) }}" method="POST">
+                    <form action="{{ route('series.destroy', $series->id) }}" method="POST">
                         @csrf
                         @method('DELETE')
                         <button class="btn btn-sm btn-danger mt-2"><i class ="fa fa-trash"></i> Excluir</button>
                     </form>
                     <span class="d-flex mt-2">
-                        <a href="{{ route('series.edit', $serie->id) }}" class="btn btn-primary btn-sm"><i class="fa fa-pencil"></i> Editar</a>
+                        <a href="{{ route('series.edit', $series->id) }}" class="btn btn-primary btn-sm"><i class="fa fa-pencil"></i> Editar</a>
                     </span>
                     {{-- <p></p> --}}
                     <span class="d-flex mt-2">
-                        <a href="{{ route('series.show', $serie->id) }}" class="btn btn-secondary btn-sm"><i class="fa fa-magnifying-glass"></i> Detalhes</a>
+                        <a href="{{ route('series.show', $series->id) }}" class="btn btn-secondary btn-sm"><i class="fa fa-magnifying-glass"></i> Detalhes</a>
                     </span>
                 </td>
             </tr>
